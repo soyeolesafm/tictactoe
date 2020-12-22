@@ -1,0 +1,89 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+}
+body {
+  display: flex;
+  font-family: sans-serif;
+  justify-content: center;
+}
+.container {
+  background: #f6f5f5;
+  margin: 30px;
+  padding: 25px 50px;
+  border-radius: 15px;
+}
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  margin-top: 50px;
+  grid-gap: 15px;
+  background: #ee6f57;
+}
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 200px;
+  background: #f6f5f5;
+  color: #145374;
+  cursor: pointer;
+}
+.game-board > .cell:hover {
+  opacity: 92%;
+}
+.container > button {
+  display: block;
+  margin: 30px auto 0px;
+  background: #f6f5f5;
+  color: #ee6f57;
+  border-radius: 15px;
+  border: 3px solid #ee6f57;
+  outline: none;
+  font-size: 1.75rem;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.container > button:hover {
+  background: #ee6f57;
+  color: #f6f5f5;
+}
+.title {
+  text-align: center;
+  color: #00334e;
+}
+.title > span {
+  color: #ee6f57;
+}
+.playermessage {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 15px;
+  color: #00334e;
+}
+.x {
+  background-image: url(/img/cross.png);
+  font-size: 200px;
+  cursor: not-allowed;
+}
+.o {
+  background-image: url(/img/circle.png);
+  font-size: 200px;
+  cursor: not-allowed;
+}
+#player {
+  color: #ee6f57;
+}
+
+.winner {
+  opacity: 75%;
+}
+
+/* color pallet #f6f5f5 #145374 #00334e #ee6f57 */
