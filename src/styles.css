@@ -70,12 +70,12 @@ body {
 }
 .x {
   background-image: url(/img/cross.png);
-  font-size: 200px;
+
   cursor: not-allowed;
 }
 .o {
   background-image: url(/img/circle.png);
-  font-size: 200px;
+
   cursor: not-allowed;
 }
 #player {
@@ -85,5 +85,21 @@ body {
 .winner {
   opacity: 75%;
 }
-
 /* color pallet #f6f5f5 #145374 #00334e #ee6f57 */
+@media only screen and (max-width: 1024px) {
+  .cell {
+    height: 150px;
+    width: 150px;
+  }
+  .o,
+  .x {
+    background-size: contain;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .cell {
+    height: 100px;
+    width: 100px;
+  }
+}
