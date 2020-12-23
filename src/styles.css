@@ -21,16 +21,16 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  margin-top: 50px;
-  grid-gap: 15px;
+  margin-top: 30px;
+  grid-gap: 12px;
   background: #ee6f57;
 }
 .cell {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   background: #f6f5f5;
   color: #145374;
   cursor: pointer;
@@ -38,7 +38,7 @@ body {
 .game-board > .cell:hover {
   opacity: 92%;
 }
-.container > button {
+.container button {
   display: block;
   margin: 30px auto 0px;
   background: #f6f5f5;
@@ -68,6 +68,24 @@ body {
   margin: 15px;
   color: #00334e;
 }
+
+.score {
+  display: flex;
+  justify-content: space-between;
+}
+.score p {
+  text-align: center;
+  font-size: 0.85em;
+  margin: 5px;
+  color: #00334e;
+  font-family: 'Dosis', sans-serif;
+}
+.score h3 {
+  text-align: center;
+  font-size: 1em;
+  margin: 5px;
+  color: #ee6f57;
+}
 .x {
   background-image: url(/img/cross.png);
 
@@ -78,6 +96,10 @@ body {
 
   cursor: not-allowed;
 }
+.o,
+.x {
+  background-size: contain;
+}
 #player {
   color: #ee6f57;
 }
@@ -86,20 +108,37 @@ body {
   opacity: 75%;
 }
 /* color pallet #f6f5f5 #145374 #00334e #ee6f57 */
-@media only screen and (max-width: 1024px) {
-  .cell {
-    height: 150px;
-    width: 150px;
-  }
-  .o,
-  .x {
-    background-size: contain;
-  }
-}
 
 @media only screen and (max-width: 540px) {
   .cell {
     height: 100px;
     width: 100px;
+  }
+  .game-board {
+    grid-gap: 8px;
+  }
+  .container button {
+    font-size: 0.75em;
+    border: 2.5px solid #ee6f57;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .cell {
+    height: 50px;
+    width: 50px;
+  }
+  .container button {
+    font-size: 0.5em;
+    border: 1px solid #ee6f57;
+  }
+  .title {
+    font-size: 0.75em;
+  }
+  .title > span {
+    font-size: 0.75;
+  }
+  .playermessage {
+    font-size: 0.75em;
   }
 }
