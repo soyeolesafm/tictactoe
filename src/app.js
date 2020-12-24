@@ -22,7 +22,7 @@ let isPlaxerX = true
 let gameActive = true
 let oScore = 0
 let xScore = 0
-let cellsChecked = []
+let cellsChecked = 0
 // 
 
 for (let i = 0; i < gameCells.length; i++ ){
@@ -33,13 +33,12 @@ for (let i = 0; i < gameCells.length; i++ ){
             gameMsg.innerHTML = `is <span id="player">O</span> turn`
             isPlaxerX = false
             e.target.classList.add(`x`)
-            cellsChecked.push(`x`)
         } else{
             gameMsg.innerHTML = `is <span id="player">X</span> turn`
             isPlaxerX = true
             e.target.classList.add(`o`)
-            cellsChecked.push(`o`)
         }
+        cellsChecked = cellsChecked + 1
         winGame()
         drawGame()
     })
@@ -76,7 +75,7 @@ const winGame = () => {
 }
 const drawGame = () => {
     
-    if (cellsChecked.length === 9){
+    if (cellsChecked === 9){
         gameMsg.innerHTML = `🙀IS A DRAW!!!😾`;
     }
     
@@ -92,7 +91,7 @@ resetBtn.addEventListener(`click`, () =>{
         gameCells[i].classList.remove('o')
         gameCells[i].classList.remove('winner')
     }
-    cellsChecked.length = 0
+    cellsChecked = 0
    
   
 })
