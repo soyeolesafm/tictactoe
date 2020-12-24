@@ -72,13 +72,13 @@ const winGame = () => {
     }
 
 }
-const drawGame = () => {
-    for (let i = 0; i < 9; i++){
-        if (gameCells[i].classList[1]){
-            gameMsg.innerHTML = `🙀IS A DRAW!!!😾`;
-        }
-    }
-}
+// const drawGame = () => {
+//     for (let i = 0; i < 9; i++){
+//         if (gameCells[i].classList[1]){
+//             gameMsg.innerHTML = `🙀IS A DRAW!!!😾`;
+//         }
+//     }
+// }
 
 resetBtn.addEventListener(`click`, () =>{
     gameActive = true
