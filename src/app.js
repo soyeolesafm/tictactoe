@@ -40,7 +40,7 @@ for (let i = 0; i < gameCells.length; i++ ){
         }
         cellsChecked = cellsChecked + 1
         winGame()
-        drawGame()
+       
     })
 }
 // create a function that check if there is a winner, finish the game and display who won
@@ -69,6 +69,8 @@ const winGame = () => {
         scoreX.innerHTML = xScore;
         }
         return
+       }else {
+        drawGame()
        }
     }
 
