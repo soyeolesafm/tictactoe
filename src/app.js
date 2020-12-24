@@ -23,9 +23,9 @@ let gameActive = true
 let oScore = 0
 let xScore = 0
 
+// 
 
-
-for (var i = 0; i < gameCells.length; i++ ){
+for (let i = 0; i < gameCells.length; i++ ){
     document.querySelectorAll(`.cell`)[i].addEventListener(`click`, (e) =>{
         if(!gameActive ||e.target.classList[1] === `x` || e.target.classList[1] === `o`)return
 
@@ -48,211 +48,46 @@ for (var i = 0; i < gameCells.length; i++ ){
 //  if is a draw AND if it so change the game active to false also add a winner class style so we can actually see the ..
 // .. winning combo 
 const winGame = () => {
-    if(gameCells[0].classList[1] === `x` && gameCells[1].classList[1] === `x` && gameCells[2].classList[1] === `x`)
-    {
-        gameMsg.innerHTML = `😺Player <span id="player">X</span> WON😺`;
+    const playerCells = [...gameCells].filter(cell => cell.classList.length > 1 && cell.classList[1] === ( !isPlaxerX ? `x`: `o`) ).map(cell => Number(cell.dataset.index))
+    for (const comb of winCombinations) {
+       const found = playerCells.filter(cell => {
+           return comb.includes(cell)
+       })
+       if (found.length === 3){
+        gameMsg.innerHTML = `😺Player <span id="player">${!isPlaxerX ? `x` : `o` }</span> WON😺`;
         gameActive = false;
-        gameCells[0].classList.add(`winner`);
-        gameCells[1].classList.add(`winner`);
-        gameCells[2].classList.add(`winner`);
-        xScore = xScore + 1
-        scoreX.innerHTML = xScore
-
-    }else if(gameCells[3].classList[1] === `x` && gameCells[4].classList[1] === `x` && gameCells[5].classList[1] === `x`){
-        gameMsg.innerHTML = `😺Player <span id="player">X</span> WON😺`;
-        gameActive = false;
-        gameCells[3].classList.add(`winner`);
-        gameCells[4].classList.add(`winner`);
-        gameCells[5].classList.add(`winner`);
-        xScore = xScore + 1
-        scoreX.innerHTML = xScore
-    }else if
-     (gameCells[6].classList[1] === `x` && gameCells[7].classList[1] === `x` && gameCells[8].classList[1] === `x`){
-        gameMsg.innerHTML = `😺Player <span id="player">X</span> WON😺`;
-        gameActive = false;
-        gameCells[6].classList.add(`winner`);
-        gameCells[7].classList.add(`winner`);
-        gameCells[8].classList.add(`winner`);
-        xScore = xScore + 1
-        scoreX.innerHTML = xScore
-    }else if
-    (gameCells[0].classList[1] === `x` && gameCells[3].classList[1] === `x` && gameCells[6].classList[1] === `x`){
-        gameMsg.innerHTML = `😺Player <span id="player">X</span> WON😺`;
-        gameActive = false;
-        gameCells[0].classList.add(`winner`);
-        gameCells[3].classList.add(`winner`);
-        gameCells[6].classList.add(`winner`);
-        xScore = xScore + 1
-        scoreX.innerHTML = xScore
-    }else if
-     (gameCells[1].classList[1] === `x` && gameCells[4].classList[1] === `x` && gameCells[7].classList[1] === `x`){
-        gameMsg.innerHTML = `😺Player <span id="player">X</span> WON😺`;
-        gameActive = false;
-        gameCells[1].classList.add(`winner`);
-        gameCells[4].classList.add(`winner`);
-        gameCells[7].classList.add(`winner`);
-        xScore = xScore + 1
-        scoreX.innerHTML = xScore
-        
-    }else if
-    (gameCells[2].classList[1] === `x` && gameCells[5].classList[1] === `x` && gameCells[8].classList[1] === `x`){
-        gameMsg.innerHTML = `😺Player <span id="player">X</span> WON😺`;
-        gameActive = false;
-        gameCells[2].classList.add(`winner`);
-        gameCells[5].classList.add(`winner`);
-        gameCells[8].classList.add(`winner`);
-        xScore = xScore + 1
-        scoreX.innerHTML = xScore
-    }else if
-     (gameCells[0].classList[1] === `x` && gameCells[4].classList[1] === `x` && gameCells[8].classList[1] === `x`){
-        gameMsg.innerHTML = `😺Player <span id="player">X</span> WON😺`;
-        gameActive = false;
-        gameCells[0].classList.add(`winner`);
-        gameCells[4].classList.add(`winner`);
-        gameCells[8].classList.add(`winner`);
-        xScore = xScore + 1
-        scoreX.innerHTML = xScore
-    }else if
-    (gameCells[2].classList[1] === `x` && gameCells[4].classList[1] === `x` && gameCells[6].classList[1] === `x`){
-        gameMsg.innerHTML = `😺Player <span id="player">X</span> WON😺`;
-        gameActive = false;
-        gameCells[2].classList.add(`winner`);
-        gameCells[4].classList.add(`winner`);
-        gameCells[6].classList.add(`winner`);
-        xScore = xScore + 1
-        scoreX.innerHTML = xScore
+        gameCells[Number(comb[0])].classList.add(`winner`);
+        gameCells[Number(comb[1])].classList.add(`winner`);
+        gameCells[Number(comb[2])].classList.add(`winner`);
+        if (isPlaxerX){
+            oScore = oScore + 1;
+        scoreO.innerHTML = oScore;
+        }else {
+            xScore = xScore + 1;
+        scoreX.innerHTML = xScore;
+        }
+        return
+       }
     }
-    else if (gameCells[0].classList[1] === `o` && gameCells[1].classList[1] === `o` && gameCells[2].classList[1] === `o`)
-    {
-        gameMsg.innerHTML = `😺Player <span id="player">O</span> WON😺`;
-        gameActive = false;
-        gameCells[0].classList.add(`winner`);
-        gameCells[1].classList.add(`winner`);
-        gameCells[2].classList.add(`winner`);
-        oScore = oScore + 1;
-        scoreO.innerHTML = oScore;
-    }else if(gameCells[3].classList[1] === `o` && gameCells[4].classList[1] === `o` && gameCells[5].classList[1] === `o`){
-        gameMsg.innerHTML = `😺Player <span id="player">O</span> WON😺`;
-        gameActive = false;
-        gameCells[3].classList.add(`winner`);
-        gameCells[4].classList.add(`winner`);
-        gameCells[5].classList.add(`winner`);
-        oScore = oScore + 1;
-        scoreO.innerHTML = oScore;
-    }else if
-     (gameCells[6].classList[1] === `o` && gameCells[7].classList[1] === `o` && gameCells[8].classList[1] === `o`){
-        gameMsg.innerHTML = `😺Player <span id="player">O</span> WON😺`;
-        gameActive = false;
-        gameCells[6].classList.add(`winner`);
-        gameCells[7].classList.add(`winner`);
-        gameCells[8].classList.add(`winner`);
-        oScore = oScore + 1;
-        scoreO.innerHTML = oScore;
-    }else if
-    (gameCells[0].classList[1] === `o` && gameCells[3].classList[1] === `o` && gameCells[6].classList[1] === `o`){
-        gameMsg.innerHTML = `😺Player <span id="player">O</span> WON😺`;
-        gameActive = false;
-        gameCells[0].classList.add(`winner`);
-        gameCells[3].classList.add(`winner`);
-        gameCells[6].classList.add(`winner`);
-        oScore = oScore + 1;
-        scoreO.innerHTML = oScore;
-    }else if
-     (gameCells[1].classList[1] === `o` && gameCells[4].classList[1] === `o` && gameCells[7].classList[1] === `o`){
-        gameMsg.innerHTML = `😺Player <span id="player">O</span> WON😺`;
-        gameActive = false;
-        gameCells[1].classList.add(`winner`);
-        gameCells[4].classList.add(`winner`);
-        gameCells[7].classList.add(`winner`);
-        oScore = oScore + 1;
-        scoreO.innerHTML = oScore;
-    }else if
-    (gameCells[2].classList[1] === `o` && gameCells[5].classList[1] === `o` && gameCells[8].classList[1] === `o`){
-        gameMsg.innerHTML = `😺Player <span id="player">O</span> WON😺`;
-        gameActive = false;
-        gameCells[2].classList.add(`winner`);
-        gameCells[5].classList.add(`winner`);
-        gameCells[8].classList.add(`winner`);
-        oScore = oScore + 1;
-        scoreO.innerHTML = oScore;
-    }else if
-     (gameCells[0].classList[1] === `o` && gameCells[4].classList[1] === `o` && gameCells[8].classList[1] === `o`){
-        gameMsg.innerHTML = `😺Player <span id="player">O</span> WON😺`;
-        gameActive = false;
-        gameCells[0].classList.add(`winner`);
-        gameCells[4].classList.add(`winner`);
-        gameCells[8].classList.add(`winner`);
-        oScore = oScore + 1;
-        scoreO.innerHTML = oScore;
-    }else if
-    (gameCells[2].classList[1] === `o` && gameCells[4].classList[1] === `o` && gameCells[6].classList[1] === `o`){
-        gameMsg.innerHTML = `😺Player <span id="player">O</span> WON😺`;
-        gameActive = false;
-        gameCells[2].classList.add(`winner`);
-        gameCells[4].classList.add(`winner`);
-        gameCells[6].classList.add(`winner`);
-        oScore = oScore + 1;
-        scoreO.innerHTML = oScore;
-    }else if (gameCells[0].classList[1]
-            && gameCells[1].classList[1]
-            && gameCells[2].classList[1]
-            && gameCells[3].classList[1]
-            && gameCells[4].classList[1]
-            && gameCells[5].classList[1]
-            && gameCells[6].classList[1]
-            && gameCells[7].classList[1]
-            && gameCells[8].classList[1])
-        gameMsg.innerHTML = `🙀IS A DRAW!!!😾`;
+
 }
 
-// resetBtn.addEventListener(`click`, () =>{ location.reload (true)})
 
 
-//  el codigo de abajo no funciona
-
-//  resetBtn.addEventListener(`click`, () =>{
-//     gameActive = true
-//     isPlaxerX = true
-//     gameMsg.innerHTML = `is <span id="player">X</span> turn`
-//     gameCells.classList.remove('x')
-//     gameCells.classList.remove('o')
-//     gameCells.classList.remove('winner')
-// })
 
 
-//  este de abajo si funciona pero es demasiado codigo
 resetBtn.addEventListener(`click`, () =>{
     gameActive = true
     isPlaxerX = true
     gameMsg.innerHTML = `is <span id="player">X</span> turn`
-    gameCells[0].classList.remove('x')
-    gameCells[1].classList.remove('x')
-    gameCells[2].classList.remove('x')
-    gameCells[3].classList.remove('x')
-    gameCells[4].classList.remove('x')
-    gameCells[5].classList.remove('x')
-    gameCells[6].classList.remove('x')
-    gameCells[7].classList.remove('x')
-    gameCells[8].classList.remove('x')
-    gameCells[0].classList.remove('o')
-    gameCells[1].classList.remove('o')
-    gameCells[2].classList.remove('o')
-    gameCells[3].classList.remove('o')
-    gameCells[4].classList.remove('o')
-    gameCells[5].classList.remove('o')
-    gameCells[6].classList.remove('o')
-    gameCells[7].classList.remove('o')
-    gameCells[8].classList.remove('o')
-    gameCells[0].classList.remove('winner')
-    gameCells[1].classList.remove('winner')
-    gameCells[2].classList.remove('winner')
-    gameCells[3].classList.remove('winner')
-    gameCells[4].classList.remove('winner')
-    gameCells[5].classList.remove('winner')
-    gameCells[6].classList.remove('winner')
-    gameCells[7].classList.remove('winner')
-    gameCells[8].classList.remove('winner')
+
+    for (let i = 0; i < 9; i++){
+        gameCells[i].classList.remove('x')
+        gameCells[i].classList.remove('o')
+        gameCells[i].classList.remove('winner')
+    }
+   
+  
 })
 
 
-console.log(xScore);
