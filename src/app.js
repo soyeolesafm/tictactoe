@@ -39,6 +39,7 @@ for (let i = 0; i < gameCells.length; i++ ){
             e.target.classList.add(`o`)
         }
         winGame()
+        drawGame()
     })
 }
 // create a function that check if there is a winner, finish the game and display who won
@@ -70,6 +71,13 @@ const winGame = () => {
        }
     }
 
+}
+const drawGame = () => {
+    for (let i = 0; i < 9; i++){
+        if (gameCells[i].classList[1]){
+            gameMsg.innerHTML = `🙀IS A DRAW!!!😾`;
+        }
+    }
 }
 
 resetBtn.addEventListener(`click`, () =>{
