@@ -72,10 +72,6 @@ const winGame = () => {
 
 }
 
-
-
-
-
 resetBtn.addEventListener(`click`, () =>{
     gameActive = true
     isPlaxerX = true
