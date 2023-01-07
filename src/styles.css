@@ -87,12 +87,12 @@ body {
   color: #ee6f57;
 }
 .x {
-  background-image: url(/img/cross.png);
+  background-image: url(./img/cross.png);
 
   cursor: not-allowed;
 }
 .o {
-  background-image: url(/img/circle.png);
+  background-image: url(./img/circle.png);
 
   cursor: not-allowed;
 }
