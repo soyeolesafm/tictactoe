@@ -35,6 +35,10 @@ body {
   color: #145374;
   cursor: pointer;
 }
+.cell>img{
+  height: 100px;
+  width: 100px;
+}
 .game-board > .cell:hover {
   opacity: 92%;
 }

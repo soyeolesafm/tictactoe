@@ -33,10 +33,12 @@ for (let i = 0; i < gameCells.length; i++ ){
             gameMsg.innerHTML = `is <span id="player">O</span> turn`
             isPlaxerX = false
             e.target.classList.add(`x`)
+            e.target.innerHTML = '<img src="./img/cross.png" alt="">'
         } else{
             gameMsg.innerHTML = `is <span id="player">X</span> turn`
             isPlaxerX = true
             e.target.classList.add(`o`)
+            e.target.innerHTML = '<img src="./img/circle.png" alt="">'
         }
         cellsChecked = cellsChecked + 1
         winGame()
@@ -92,6 +94,7 @@ resetBtn.addEventListener(`click`, () =>{
         gameCells[i].classList.remove('x')
         gameCells[i].classList.remove('o')
         gameCells[i].classList.remove('winner')
+        gameCells[i].innerHTML = ''
     }
     cellsChecked = 0
    
